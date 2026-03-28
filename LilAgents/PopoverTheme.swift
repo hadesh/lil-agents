@@ -150,7 +150,94 @@ struct PopoverTheme {
         bubbleCornerRadius: 8
     )
 
-    static let allThemes: [PopoverTheme] = [.playful, .teenageEngineering, .wii, .iPod]
+    static let neon = PopoverTheme(
+        name: "Neon",
+        popoverBg: NSColor(red: 0.03, green: 0.05, blue: 0.09, alpha: 0.97),
+        popoverBorder: NSColor(red: 0.0, green: 1.0, blue: 0.76, alpha: 0.75),
+        popoverBorderWidth: 1.5,
+        popoverCornerRadius: 10,
+        titleBarBg: NSColor(red: 0.05, green: 0.09, blue: 0.15, alpha: 1.0),
+        titleText: NSColor(red: 0.0, green: 1.0, blue: 0.76, alpha: 1.0),
+        titleFont: NSFont(name: "SFMono-Bold", size: 10) ?? .monospacedSystemFont(ofSize: 10, weight: .bold),
+        titleFormat: .uppercase,
+        separatorColor: NSColor(red: 0.0, green: 1.0, blue: 0.76, alpha: 0.2),
+        font: NSFont(name: "SFMono-Regular", size: 11.5) ?? .monospacedSystemFont(ofSize: 11.5, weight: .regular),
+        fontBold: NSFont(name: "SFMono-Medium", size: 11.5) ?? .monospacedSystemFont(ofSize: 11.5, weight: .medium),
+        textPrimary: NSColor(red: 0.85, green: 0.95, blue: 1.0, alpha: 1.0),
+        textDim: NSColor(red: 0.4, green: 0.55, blue: 0.65, alpha: 1.0),
+        accentColor: NSColor(red: 0.0, green: 1.0, blue: 0.76, alpha: 1.0),
+        errorColor: NSColor(red: 1.0, green: 0.2, blue: 0.5, alpha: 1.0),
+        successColor: NSColor(red: 0.2, green: 1.0, blue: 0.5, alpha: 1.0),
+        inputBg: NSColor(red: 0.05, green: 0.08, blue: 0.12, alpha: 1.0),
+        inputCornerRadius: 4,
+        bubbleBg: NSColor(red: 0.04, green: 0.07, blue: 0.12, alpha: 0.95),
+        bubbleBorder: NSColor(red: 0.0, green: 1.0, blue: 0.76, alpha: 0.55),
+        bubbleText: NSColor(red: 0.5, green: 0.75, blue: 0.85, alpha: 1.0),
+        bubbleCompletionBorder: NSColor(red: 0.2, green: 1.0, blue: 0.5, alpha: 0.7),
+        bubbleCompletionText: NSColor(red: 0.2, green: 1.0, blue: 0.5, alpha: 1.0),
+        bubbleFont: .monospacedSystemFont(ofSize: 10, weight: .medium),
+        bubbleCornerRadius: 8
+    )
+
+    static let sunset = PopoverTheme(
+        name: "Sunset",
+        popoverBg: NSColor(red: 0.10, green: 0.06, blue: 0.10, alpha: 0.97),
+        popoverBorder: NSColor(red: 1.0, green: 0.45, blue: 0.3, alpha: 0.7),
+        popoverBorderWidth: 2.0,
+        popoverCornerRadius: 20,
+        titleBarBg: NSColor(red: 0.15, green: 0.07, blue: 0.13, alpha: 1.0),
+        titleText: NSColor(red: 1.0, green: 0.6, blue: 0.4, alpha: 1.0),
+        titleFont: .systemFont(ofSize: 12, weight: .bold),
+        titleFormat: .lowercaseTilde,
+        separatorColor: NSColor(red: 1.0, green: 0.45, blue: 0.3, alpha: 0.2),
+        font: .systemFont(ofSize: 12, weight: .regular),
+        fontBold: .systemFont(ofSize: 12, weight: .semibold),
+        textPrimary: NSColor(red: 0.97, green: 0.90, blue: 0.88, alpha: 1.0),
+        textDim: NSColor(red: 0.65, green: 0.52, blue: 0.55, alpha: 1.0),
+        accentColor: NSColor(red: 1.0, green: 0.55, blue: 0.35, alpha: 1.0),
+        errorColor: NSColor(red: 1.0, green: 0.25, blue: 0.35, alpha: 1.0),
+        successColor: NSColor(red: 0.55, green: 0.88, blue: 0.62, alpha: 1.0),
+        inputBg: NSColor(red: 0.14, green: 0.08, blue: 0.13, alpha: 1.0),
+        inputCornerRadius: 12,
+        bubbleBg: NSColor(red: 0.13, green: 0.07, blue: 0.12, alpha: 0.95),
+        bubbleBorder: NSColor(red: 1.0, green: 0.45, blue: 0.3, alpha: 0.55),
+        bubbleText: NSColor(red: 0.75, green: 0.58, blue: 0.62, alpha: 1.0),
+        bubbleCompletionBorder: NSColor(red: 0.55, green: 0.88, blue: 0.62, alpha: 0.65),
+        bubbleCompletionText: NSColor(red: 0.45, green: 0.85, blue: 0.55, alpha: 1.0),
+        bubbleFont: .systemFont(ofSize: 11, weight: .semibold),
+        bubbleCornerRadius: 14
+    )
+
+    static let aurora = PopoverTheme(
+        name: "Aurora",
+        popoverBg: NSColor(red: 0.03, green: 0.04, blue: 0.08, alpha: 0.97),
+        popoverBorder: NSColor(red: 0.2, green: 0.85, blue: 0.65, alpha: 0.65),
+        popoverBorderWidth: 1.5,
+        popoverCornerRadius: 14,
+        titleBarBg: NSColor(red: 0.05, green: 0.06, blue: 0.12, alpha: 1.0),
+        titleText: NSColor(red: 0.45, green: 0.95, blue: 0.75, alpha: 1.0),
+        titleFont: .systemFont(ofSize: 11, weight: .semibold),
+        titleFormat: .lowercaseTilde,
+        separatorColor: NSColor(red: 0.2, green: 0.85, blue: 0.65, alpha: 0.18),
+        font: .systemFont(ofSize: 12, weight: .regular),
+        fontBold: .systemFont(ofSize: 12, weight: .semibold),
+        textPrimary: NSColor(red: 0.82, green: 0.92, blue: 0.96, alpha: 1.0),
+        textDim: NSColor(red: 0.38, green: 0.52, blue: 0.62, alpha: 1.0),
+        accentColor: NSColor(red: 0.3, green: 0.9, blue: 0.7, alpha: 1.0),
+        errorColor: NSColor(red: 1.0, green: 0.3, blue: 0.45, alpha: 1.0),
+        successColor: NSColor(red: 0.3, green: 0.95, blue: 0.6, alpha: 1.0),
+        inputBg: NSColor(red: 0.05, green: 0.07, blue: 0.13, alpha: 1.0),
+        inputCornerRadius: 8,
+        bubbleBg: NSColor(red: 0.04, green: 0.06, blue: 0.11, alpha: 0.95),
+        bubbleBorder: NSColor(red: 0.2, green: 0.85, blue: 0.65, alpha: 0.5),
+        bubbleText: NSColor(red: 0.42, green: 0.68, blue: 0.72, alpha: 1.0),
+        bubbleCompletionBorder: NSColor(red: 0.3, green: 0.95, blue: 0.6, alpha: 0.65),
+        bubbleCompletionText: NSColor(red: 0.3, green: 0.95, blue: 0.6, alpha: 1.0),
+        bubbleFont: .systemFont(ofSize: 10, weight: .medium),
+        bubbleCornerRadius: 10
+    )
+
+    static let allThemes: [PopoverTheme] = [.playful, .teenageEngineering, .wii, .iPod, .neon, .sunset, .aurora]
 
     private static let themeKey = "selectedThemeName"
 
@@ -197,8 +284,8 @@ struct PopoverTheme {
     }
 
     func withCustomFont() -> PopoverTheme {
-        // Midnight uses its own mono font — don't override
-        guard name != "Midnight" else { return self }
+        // Midnight and Neon use their own mono fonts — don't override
+        guard name != "Midnight", name != "Neon" else { return self }
         guard let fontName = PopoverTheme.customFontName,
               let baseFont = NSFont(name: fontName, size: PopoverTheme.customFontSize) else { return self }
         let boldFont = NSFontManager.shared.convert(baseFont, toHaveTrait: .boldFontMask)

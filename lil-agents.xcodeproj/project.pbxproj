@@ -23,6 +23,7 @@
 		A10000010000000000000032 /* ShellEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000031 /* ShellEnvironment.swift */; };
 		A10000010000000000000033 /* CodexSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000032 /* CodexSession.swift */; };
 		A10000010000000000000034 /* CopilotSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000033 /* CopilotSession.swift */; };
+		A10000010000000000000035 /* GeminiSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10000020000000000000034 /* GeminiSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		A10000020000000000000031 /* ShellEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellEnvironment.swift; sourceTree = "<group>"; };
 		A10000020000000000000032 /* CodexSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodexSession.swift; sourceTree = "<group>"; };
 		A10000020000000000000033 /* CopilotSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopilotSession.swift; sourceTree = "<group>"; };
+		A10000020000000000000034 /* GeminiSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiSession.swift; sourceTree = "<group>"; };
 		A10000030000000000000001 /* lil agents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lil agents.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -77,6 +79,7 @@
 				A10000020000000000000022 /* ClaudeSession.swift */,
 				A10000020000000000000032 /* CodexSession.swift */,
 				A10000020000000000000033 /* CopilotSession.swift */,
+				A10000020000000000000034 /* GeminiSession.swift */,
 				A10000020000000000000023 /* TerminalView.swift */,
 				A10000020000000000000024 /* WalkerCharacter.swift */,
 				A10000020000000000000025 /* LilAgentsController.swift */,
@@ -184,6 +187,7 @@
 				A10000010000000000000022 /* ClaudeSession.swift in Sources */,
 				A10000010000000000000033 /* CodexSession.swift in Sources */,
 				A10000010000000000000034 /* CopilotSession.swift in Sources */,
+				A10000010000000000000035 /* GeminiSession.swift in Sources */,
 				A10000010000000000000023 /* TerminalView.swift in Sources */,
 				A10000010000000000000024 /* WalkerCharacter.swift in Sources */,
 				A10000010000000000000025 /* LilAgentsController.swift in Sources */,
@@ -197,6 +201,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -253,6 +258,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -291,6 +297,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -327,6 +334,7 @@
 		A1000000A000000000000004 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = LilAgents/LilAgents.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -344,6 +352,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.1.1;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lilagents.app;
 				PRODUCT_NAME = "lil agents";
 				SWIFT_EMIT_LOC_STRINGS = YES;

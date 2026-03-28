@@ -6,7 +6,7 @@ Tiny AI companions that live on your macOS dock.
 
 **Bruce** and **Jazz** walk back and forth above your dock. Click one to open an AI terminal. They walk, they think, they vibe.
 
-Supports **Claude Code**, **OpenAI Codex**, and **GitHub Copilot** CLIs — switch between them from the menubar.
+Supports **Claude Code**, **OpenAI Codex**, **GitHub Copilot**, and **Google Gemini** CLIs — switch between them from the menubar.
 
 **[Download for macOS](https://lilagents.xyz)** · [Website](https://lilagents.xyz)
 
@@ -14,8 +14,11 @@ Supports **Claude Code**, **OpenAI Codex**, and **GitHub Copilot** CLIs — swit
 
 - Animated characters rendered from transparent HEVC video
 - Click a character to chat with AI in a themed popover terminal
-- Switch between Claude, Codex, and Copilot from the menubar
-- Four visual themes: Peach, Midnight, Cloud, Moss
+- Switch between Claude, Codex, Copilot, and Gemini from the menubar
+- Seven visual themes: Peach, Midnight, Cloud, Moss, Neon, Sunset, Aurora
+- Slash commands: `/clear`, `/copy`, `/help` in the chat input
+- Copy last response button in the title bar
+- Global hotkey `⌘⇧Space` to instantly open a character from anywhere
 - Thinking bubbles with playful phrases while your agent works
 - Sound effects on completion
 - First-run onboarding with a friendly welcome
@@ -23,11 +26,13 @@ Supports **Claude Code**, **OpenAI Codex**, and **GitHub Copilot** CLIs — swit
 
 ## requirements
 
-- macOS Sonoma (14.0+)
+- macOS Sonoma (14.0+) — including Sequoia (15.x)
+- **Universal binary** — runs natively on both Apple Silicon and Intel Macs
 - At least one supported CLI installed:
   - [Claude Code](https://claude.ai/download) — `curl -fsSL https://claude.ai/install.sh | sh`
   - [OpenAI Codex](https://github.com/openai/codex) — `npm install -g @openai/codex`
   - [GitHub Copilot](https://github.com/github/copilot-cli) — `brew install copilot-cli`
+  - [Google Gemini CLI](https://github.com/google-gemini/gemini-cli) — `npm install -g @google/gemini-cli`
 
 ## building
 

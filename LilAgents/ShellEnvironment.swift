@@ -84,6 +84,10 @@ class ShellEnvironment {
             env["PATH"] = (missingPaths + [currentPath]).joined(separator: ":")
         }
         env["TERM"] = "dumb"
+        // Remove Claude Code's session marker so spawned CLIs don't see a
+        // nested session and refuse to start.
+        env.removeValue(forKey: "CLAUDECODE")
+        env.removeValue(forKey: "CLAUDE_CODE_ENTRYPOINT")
         return env
     }
 

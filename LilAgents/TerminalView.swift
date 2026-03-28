@@ -52,8 +52,10 @@ class TerminalView: NSView {
     let textView = NSTextView()
     let inputField = NSTextField()
     var onSendMessage: ((String) -> Void)?
+    var onClearRequested: (() -> Void)?
 
     private var currentAssistantText = ""
+    private var lastAssistantText = ""
     private var isStreaming = false
 
     override init(frame: NSRect) {
@@ -151,10 +153,66 @@ class TerminalView: NSView {
         guard !text.isEmpty else { return }
         inputField.stringValue = ""
 
+        if handleSlashCommand(text) { return }
+
         appendUser(text)
         isStreaming = true
         currentAssistantText = ""
         onSendMessage?(text)
+    }
+
+    // MARK: - Slash Commands
+
+    func handleSlashCommandPublic(_ text: String) {
+        _ = handleSlashCommand(text)
+    }
+
+    private func handleSlashCommand(_ text: String) -> Bool {
+        guard text.hasPrefix("/") else { return false }
+        let cmd = text.lowercased().trimmingCharacters(in: .whitespaces)
+
+        switch cmd {
+        case "/clear":
+            textView.textStorage?.setAttributedString(NSAttributedString(string: ""))
+            onClearRequested?()
+            return true
+
+        case "/copy":
+            let toCopy = lastAssistantText.isEmpty ? "nothing to copy yet" : lastAssistantText
+            NSPasteboard.general.clearContents()
+            NSPasteboard.general.setString(toCopy, forType: .string)
+            let t = theme
+            textView.textStorage?.append(NSAttributedString(
+                string: "  ✓ copied to clipboard\n",
+                attributes: [.font: t.font, .foregroundColor: t.successColor]
+            ))
+            scrollToBottom()
+            return true
+
+        case "/help":
+            let t = theme
+            let help = NSMutableAttributedString()
+            help.append(NSAttributedString(string: "  lil agents — slash commands\n",
+                attributes: [.font: t.fontBold, .foregroundColor: t.accentColor]))
+            help.append(NSAttributedString(string: "  /clear  ", attributes: [.font: t.fontBold, .foregroundColor: t.textPrimary]))
+            help.append(NSAttributedString(string: "clear chat history\n", attributes: [.font: t.font, .foregroundColor: t.textDim]))
+            help.append(NSAttributedString(string: "  /copy   ", attributes: [.font: t.fontBold, .foregroundColor: t.textPrimary]))
+            help.append(NSAttributedString(string: "copy last response\n", attributes: [.font: t.font, .foregroundColor: t.textDim]))
+            help.append(NSAttributedString(string: "  /help   ", attributes: [.font: t.fontBold, .foregroundColor: t.textPrimary]))
+            help.append(NSAttributedString(string: "show this message\n", attributes: [.font: t.font, .foregroundColor: t.textDim]))
+            textView.textStorage?.append(help)
+            scrollToBottom()
+            return true
+
+        default:
+            let t = theme
+            textView.textStorage?.append(NSAttributedString(
+                string: "  unknown command: \(text) (try /help)\n",
+                attributes: [.font: t.font, .foregroundColor: t.errorColor]
+            ))
+            scrollToBottom()
+            return true
+        }
     }
 
     // MARK: - Append Methods
@@ -203,6 +261,10 @@ class TerminalView: NSView {
     func endStreaming() {
         if isStreaming {
             isStreaming = false
+            if !currentAssistantText.isEmpty {
+                lastAssistantText = currentAssistantText
+            }
+            currentAssistantText = ""
         }
     }
 
