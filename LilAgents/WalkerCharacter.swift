@@ -39,6 +39,13 @@ class WalkerCharacter {
     var walkStartPixel: CGFloat = 0.0
     var walkEndPixel: CGFloat = 0.0
 
+    // Drag state
+    var isDragging = false
+    private var cachedDockX: CGFloat = 0
+    private var cachedDockWidth: CGFloat = 0
+    private var cachedDockTopY: CGFloat = 0
+    private var dragMouseOffset: NSPoint = .zero
+
     // Onboarding
     var isOnboarding = false
 
@@ -796,7 +803,17 @@ class WalkerCharacter {
     // MARK: - Frame Update
 
     func update(dockX: CGFloat, dockWidth: CGFloat, dockTopY: CGFloat) {
+        cachedDockX = dockX
+        cachedDockWidth = dockWidth
+        cachedDockTopY = dockTopY
         currentTravelDistance = max(dockWidth - displayWidth, 0)
+
+        if isDragging {
+            updatePopoverPosition()
+            updateThinkingBubble()
+            return
+        }
+
         if isIdleForPopover {
             let travelDistance = currentTravelDistance
             let x = dockX + travelDistance * positionProgress + currentFlipCompensation
@@ -850,5 +867,62 @@ class WalkerCharacter {
         }
 
         updateThinkingBubble()
+    }
+
+    // MARK: - Dragging
+
+    func beginDrag(mouseScreenPoint: NSPoint) {
+        isDragging = true
+        isWalking = false
+        isPaused = true
+        queuePlayer.pause()
+        queuePlayer.seek(to: .zero)
+        // 记录鼠标按下时相对于窗口左下角的偏移，使角色跟随鼠标而非跳位
+        let winOrigin = window.frame.origin
+        dragMouseOffset = NSPoint(x: mouseScreenPoint.x - winOrigin.x,
+                                  y: mouseScreenPoint.y - winOrigin.y)
+    }
+
+    func continueDrag(to screenPoint: NSPoint) {
+        guard isDragging else { return }
+        guard let screen = window.screen ?? NSScreen.main else { return }
+
+        var newX = screenPoint.x - dragMouseOffset.x
+        var newY = screenPoint.y - dragMouseOffset.y
+
+        let screenFrame = screen.frame
+        newX = max(screenFrame.minX, min(newX, screenFrame.maxX - window.frame.width))
+        newY = max(screenFrame.minY, min(newY, screenFrame.maxY - window.frame.height))
+
+        window.setFrameOrigin(NSPoint(x: newX, y: newY))
+        updatePopoverPosition()
+        updateThinkingBubble()
+    }
+
+    func endDrag() {
+        guard isDragging else { return }
+        isDragging = false
+
+        // 松手时将当前水平位置映射回 positionProgress，松手后继续从该位置走路
+        let travelDistance = max(cachedDockWidth - displayWidth, 0)
+        if travelDistance > 0 {
+            let localX = window.frame.origin.x - cachedDockX
+            positionProgress = min(max(localX / travelDistance, 0), 1)
+        }
+
+        let bottomPadding = displayHeight * 0.15
+        let targetX = cachedDockX + max(cachedDockWidth - displayWidth, 0) * positionProgress + currentFlipCompensation
+        let targetY = cachedDockTopY - bottomPadding + yOffset
+        let targetOrigin = NSPoint(x: targetX, y: targetY)
+
+        NSAnimationContext.runAnimationGroup({ ctx in
+            ctx.duration = 0.35
+            ctx.timingFunction = CAMediaTimingFunction(name: .easeOut)
+            window.animator().setFrameOrigin(targetOrigin)
+        }, completionHandler: {
+            self.isPaused = true
+            self.isWalking = false
+            self.pauseEndTime = CACurrentMediaTime() + Double.random(in: 0.5...1.5)
+        })
     }
 }

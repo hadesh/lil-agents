@@ -84,10 +84,11 @@ class ShellEnvironment {
             env["PATH"] = (missingPaths + [currentPath]).joined(separator: ":")
         }
         env["TERM"] = "dumb"
-        // Remove Claude Code's session marker so spawned CLIs don't see a
-        // nested session and refuse to start.
+        // 移除 Claude Code 的 session 标记，防止 Claude CLI 检测到嵌套 session 而拒绝启动
         env.removeValue(forKey: "CLAUDECODE")
         env.removeValue(forKey: "CLAUDE_CODE_ENTRYPOINT")
+        // 移除 OpenCode 的 session 标记，防止 opencode CLI 检测到嵌套 session 而拒绝启动
+        env.removeValue(forKey: "OPENCODE_SESSION")
         return env
     }
 
