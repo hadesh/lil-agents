@@ -6,7 +6,7 @@ Tiny AI companions that live on your macOS dock.
 
 **Bruce** and **Jazz** walk back and forth above your dock. Click one to open an AI terminal. They walk, they think, they vibe.
 
-Supports **Claude Code**, **OpenAI Codex**, **GitHub Copilot**, **Google Gemini**, and **OpenCode** CLIs — switch between them from the menubar or by right-clicking a character.
+Supports **Claude Code**, **OpenAI Codex**, **GitHub Copilot**, **Google Gemini**, **OpenCode**, and **OpenClaw** — switch between them from the menubar or by right-clicking a character.
 
 **[Download for macOS](https://lilagents.xyz)** · [Website](https://lilagents.xyz)
 
@@ -16,7 +16,7 @@ Supports **Claude Code**, **OpenAI Codex**, **GitHub Copilot**, **Google Gemini*
 - Click a character to chat with AI in a themed popover terminal
 - Drag a character anywhere on screen — it snaps back to the dock when released
 - Right-click a character to show/hide it, switch AI provider, or choose a display
-- Switch between Claude, Codex, Copilot, Gemini, and OpenCode from the menubar
+- Switch between Claude, Codex, Copilot, Gemini, OpenCode, and OpenClaw from the menubar
 - Four visual themes: Peach, Midnight, Cloud, Moss
 - Slash commands: `/clear`, `/copy`, `/help` in the chat input
 - Copy last response button in the title bar
@@ -35,6 +35,7 @@ Supports **Claude Code**, **OpenAI Codex**, **GitHub Copilot**, **Google Gemini*
   - [GitHub Copilot](https://github.com/github/copilot-cli) — `brew install copilot-cli`
   - [Google Gemini CLI](https://github.com/google-gemini/gemini-cli) — `npm install -g @google/gemini-cli`
   - [OpenCode](https://opencode.ai) — `curl -fsSL https://opencode.ai/install | sh`
+  - [OpenClaw](https://github.com/openclaw/openclaw) — `npm install -g openclaw`
 
 ## building
 
@@ -45,7 +46,7 @@ Open `lil-agents.xcodeproj` in Xcode and hit run.
 lil agents runs entirely on your Mac and sends no personal data anywhere.
 
 - **Your data stays local.** The app plays bundled animations and calculates your dock size to position the characters. No project data, file paths, or personal information is collected or transmitted.
-- **AI providers.** Conversations are handled entirely by the CLI process you choose (Claude, Codex, Copilot, Gemini, or OpenCode) running locally. lil agents does not intercept, store, or transmit your chat content. Any data sent to the provider is governed by their respective terms and privacy policies.
+- **AI providers.** Conversations are handled entirely by the CLI process you choose (Claude, Codex, Copilot, Gemini, OpenCode, or OpenClaw) running locally. lil agents does not intercept, store, or transmit your chat content. Any data sent to the provider is governed by their respective terms and privacy policies.
 - **No accounts.** No login, no user database, no analytics in the app.
 - **Updates.** lil agents uses Sparkle to check for updates, which sends your app version and macOS version. Nothing else.
 
